@@ -85,6 +85,8 @@ export class ByteroverService {
       body: JSON.stringify({
         messages,
         userId: this.userId,
+        provider: this.provider,
+        model: this.model
       }),
     });
   }
