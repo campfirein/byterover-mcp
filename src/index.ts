@@ -11,7 +11,7 @@ export async function startServer(): Promise<void> {
   const server = new ByteroverServer(
     config.byteroverPublicApiKey,
     config.userId,
-    config.provider,
+    config.llmKeyName,
     config.model,
   );
 

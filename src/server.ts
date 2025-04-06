@@ -15,8 +15,8 @@ export class ByteroverServer {
   private readonly byteroverService: ByteroverService;
   private sseTransport: SSEServerTransport | null = null;
 
-  constructor(byteroverPublicApiKey: string, userId: string, provider: string, model: string) {
-    this.byteroverService = new ByteroverService(byteroverPublicApiKey, userId, provider, model);
+  constructor(byteroverPublicApiKey: string, userId: string, llmKeyName: string, model: string) {
+    this.byteroverService = new ByteroverService(byteroverPublicApiKey, userId, llmKeyName, model);
     this.server = new McpServer(
       {
         name: "Byterover MCP Server",
@@ -67,7 +67,7 @@ export class ByteroverServer {
 
     // Tool to create memories
     this.server.tool(
-      "create-memory",
+      "create-memories",
       "Create a new memory by extracting critical coding knowledge from human-agent interactions. This includes successful problem-solving approaches, feature implementations, bug fixes, architectural decisions, and noteworthy coding patterns. These memories serve as valuable references for similar challenges in future tasks, helping to build a knowledge base of proven solutions and best practices.",
       {
         messages: z.array(

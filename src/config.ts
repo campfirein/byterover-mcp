@@ -5,13 +5,13 @@ interface ServerConfig {
   byteroverPublicApiKey: string;
   port: number;
   userId: string;
-  provider: string;
+  llmKeyName: string;
   model: string;
   configSources: {
     byteroverPublicApiKey: "cli" | "env";
     port: "cli" | "env" | "default";
     userId: "cli" | "env";
-    provider: "cli" | "env";
+    llmKeyName: "cli" | "env";
     model: "cli" | "env";
   };
 }
@@ -25,7 +25,7 @@ interface CliArgs {
   byteroverPublicApiKey?: string;
   port?: number;
   userId?: string;
-  provider?: string;
+  llmKeyName?: string;
   model?: string;
 }
 
@@ -44,9 +44,9 @@ export function getServerConfig(isStdioMode: boolean): ServerConfig {
         type: "string",
         description: "User ID to run the server on",
       },
-      provider: {
+      llmKeyName: {
         type: "string",
-        description: "LLM Provider to use for the server the valid values are openai or claude",
+        description: "LLM Key Name to use for the server",
       },
       model: {
         type: "string",
@@ -62,13 +62,13 @@ export function getServerConfig(isStdioMode: boolean): ServerConfig {
     byteroverPublicApiKey: argv.byteroverPublicApiKey || "",
     port: argv.port || 3333,
     userId: argv.userId || "",
-    provider: argv.provider || "",
+    llmKeyName: argv.llmKeyName || "",
     model: argv.model || "",
     configSources: {
       byteroverPublicApiKey: argv.byteroverPublicApiKey ? "cli" : "env",
       port: argv.port ? "cli" : process.env.PORT ? "env" : "default",
       userId: argv.userId ? "cli" : "env",
-      provider: argv.provider ? "cli" : "env",
+      llmKeyName: argv.llmKeyName ? "cli" : "env",
       model: argv.model ? "cli" : "env",
     },
   };
@@ -83,8 +83,8 @@ export function getServerConfig(isStdioMode: boolean): ServerConfig {
     process.exit(1);
   }
 
-  if (!config.provider) {
-    console.error("LLM Provider is required");
+  if (!config.llmKeyName) {
+    console.error("LLM Key Name is required");
     process.exit(1);
   }
 
@@ -99,7 +99,7 @@ export function getServerConfig(isStdioMode: boolean): ServerConfig {
     console.log(`  Byterover Public API Key: ${maskApiKey(config.byteroverPublicApiKey)}`);
     console.log(`  Port: ${config.port}`);
     console.log(`  User ID: ${config.userId}`);
-    console.log(`  Provider: ${config.provider}`);
+    console.log(`  LLM Key Name: ${config.llmKeyName}`);
     console.log(`  Model: ${config.model}`);
   }
   return config;
