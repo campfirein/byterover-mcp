@@ -36,10 +36,10 @@ export class ByteroverServer {
     // Tool to search the memories
     this.server.tool(
       "search-memories",
-      "Retrieve valuable coding knowledge from previously stored human-agent interactions. Search through a curated knowledge base containing: 1) Successful problem-solving approaches and their implementation details, 2) Bug fixing strategies and debugging insights, 3) Feature implementation patterns and best practices, 4) Important architectural decisions and their rationale, 5) Code snippets and technical solutions that proved effective in similar past scenarios. This tool helps leverage past experiences to solve current challenges more effectively.",
+      "Search a curated knowledge base of past coding solutions and insights to find relevant help for your current task. Use 'query' to specify search terms and 'limit' to control the number of results based on your task's complexity.",
       {
         query: z.string(),
-        limit: z.number().optional(),
+        limit: z.number(),
       },
       async ({ query, limit }) => {
         try {
@@ -68,7 +68,7 @@ export class ByteroverServer {
     // Tool to create memories
     this.server.tool(
       "create-memories",
-      "Create a new memory by extracting critical coding knowledge from human-agent interactions. This includes successful problem-solving approaches, feature implementations, bug fixes, architectural decisions, and noteworthy coding patterns. These memories serve as valuable references for similar challenges in future tasks, helping to build a knowledge base of proven solutions and best practices.",
+      "Create a new memory by capturing key coding insights from human-agent interactions to help solve similar tasks in the future.",
       {
         messages: z.array(
           z.object({
