@@ -30,6 +30,7 @@
     "type": "git",
     "url": "git+https://github.com/campfirein/byterover-mcp.git"
   },
+  "homepage": "https://www.byterover.dev",
   "keywords": [
     "vibe coding",
     "agent",
