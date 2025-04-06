@@ -21,14 +21,14 @@ interface Message {
 export class ByteroverService {
   private readonly byteroverPublicApiKey: string;
   private readonly userId: string;
-  private readonly provider: string;
+  private readonly llmKeyName: string;
   private readonly model: string;
   private readonly baseUrl: string = "https://api.byterover.dev/api/v1";
 
-  constructor(byteroverPublicApiKey: string, userId: string, provider: string, model: string) {
+  constructor(byteroverPublicApiKey: string, userId: string, llmKeyName: string, model: string) {
     this.byteroverPublicApiKey = byteroverPublicApiKey;
     this.userId = userId;
-    this.provider = provider;
+    this.llmKeyName = llmKeyName;
     this.model = model;
   }
 
@@ -85,7 +85,7 @@ export class ByteroverService {
       body: JSON.stringify({
         messages,
         userId: this.userId,
-        provider: this.provider,
+        llmKeyName: this.llmKeyName,
         model: this.model
       }),
     });
