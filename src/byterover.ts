@@ -23,7 +23,7 @@ export class ByteroverService {
   private readonly userId: string;
   private readonly provider: string;
   private readonly model: string;
-  private readonly baseUrl: string = "http://0.0.0.0:3030/api/v1";
+  private readonly baseUrl: string = "https://api.byterover.dev/api/v1";
 
   constructor(byteroverPublicApiKey: string, userId: string, provider: string, model: string) {
     this.byteroverPublicApiKey = byteroverPublicApiKey;

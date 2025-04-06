@@ -1,6 +1,6 @@
 {
   "name": "byterover-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Model Context Protocol server for ByteRover - a sharing memory layer for your vibe coding agent",
   "type": "module",
   "main": "dist/index.js",
@@ -30,7 +30,7 @@
     "type": "git",
     "url": "git+https://github.com/campfirein/byterover-mcp.git"
   },
-  "homepage": "https://www.byterover.dev",
+  "homepage": "https://byterover.dev",
   "keywords": [
     "vibe coding",
     "agent",
